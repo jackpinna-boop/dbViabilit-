@@ -1,0 +1,153 @@
+﻿n.pgr;STR;Centro di costo;codice;Denominazione intervento;Tipologia di intervento;Anno rif;Stato della procedura;RUP;Data prevista inizio;Data prevista fine;Avviati?;PTLLPP;CUP;importo stanziato;importo stimato
+001;SP_001;3.2.1;SP_001_001;prova 1;manutenzione straordinaria;;in corso;;;;SI;SI;; € 100.000,00 ;
+002;SP_075;3.2.7;SP_075_002;prova 2;manutenzione ordinaria;;in programma;;;;NO;NO;;; € 100.000,00 
+003;SP_081;3.2.15;SP_081_003;prova 3;manutenzione straordinaria;;in corso;;;;SI;SI;; € 40.000,00 ;
+004;SP_073;3.2.5;SP_073_004;prova 4;manutenzione ordinaria;;in programma;;;;SI;SI;; € 10.000,00 ;
+005;SP_074;3.2.6;SP_074_005;prova 5;manutenzione ordinaria;;in programma;;;;SI;SI;;; € 225.000,00 
+006;SP_074;3.2.6;SP_074_006;prova 6;manutenzione straordinaria;;in corso;;;;SI;SI;;; € 80.000,00 
+007;SP_075;3.2.7;SP_075_007;prova 7;manutenzione ordinaria;;proposto;;;;NO;NO;; € 20.000,00 ;
+008;SP_076;3.2.9;SP_076_008;prova 8;manutenzione straordinaria;;in corso;;;;SI;SI;; € 200.000,00 ;
+009;SP_105;3.1.9;SP_105_009;prova 9;manutenzione ordinaria;;in programma;;;;SI;SI;;; € 120.000,00 
+010;SP_083;3.1.2;SP_083_010;prova 10;manutenzione ordinaria;;in programma;;;;SI;SI;; € 25.000,00 ;
+011;SP_105;3.1.9;SP_105_011;prova 11;;;;;;;;;;;
+012;SP_100;3.2.17;SP_100_012;prova 12;;;;;;;;;;;
+013;SP_105;3.1.9;SP_105_013;prova 13;;;;;;;;;;;
+014;SP_105;3.1.9;SP_105_014;prova 14;;;;;;;;;;;
+015;SP_105;3.1.9;SP_105_015;prova 15;;;;;;;;;;;
+016;SP_086;3.1.5;SP_086_016;prova 16;;;;;;;;;;;
+017;SP_086;3.1.5;SP_086_017;prova 17;;;;;;;;;;;
+018;SP_105;3.1.9;SP_105_018;prova 18;;;;;;;;;;;
+019;SP_086;3.1.5;SP_086_019;prova 19;;;;;;;;;;;
+020;SP_086;3.1.5;SP_086_020;prova 20;;;;;;;;;;;
+021;SP_086;3.1.5;SP_086_021;prova 21;;;;;;;;;;;
+022;SP_086;3.1.5;SP_086_022;prova 22;;;;;;;;;;;
+023;SP_105;3.1.9;SP_105_023;prova 23;;;;;;;;;;;
+024;SP_105;3.1.9;SP_105_024;prova 24;;;;;;;;;;;
+025;SP_105;3.1.9;SP_105_025;prova 25;;;;;;;;;;;
+026;SP_105;3.1.9;SP_105_026;prova 26;;;;;;;;;;;
+027;SP_105;3.1.9;SP_105_027;prova 27;;;;;;;;;;;
+028;SP_110;3.2.20;SP_110_028;prova 28;;;;;;;;;;;
+029;SP_110;3.2.20;SP_110_029;prova 29;;;;;;;;;;;
+030;SP_002;3.2.2;SP_002_030;prova 30;;;;;;;;;;;
+031;SP_001;3.2.1;SP_001_031;Mn Strd - MiS;;2026;aff progettaz;GLB;;;NO;SI;H67H25000970002;100000;
+032;SP_002;3.2.2;SP_002_032;Mn Strd - MiS (villamassargia - siliqua);;2026;aff progettaz;AM;;;NO;SI;H67H25000960002;500000;
+032;SP_002_2;3.2.2;SP_002_2_032;MiS ponti e viadotti;;2027;redaz DIP;AM;;;NO;SI;J17H21004790001;1.768.444,84;
+033;SP_002_2;3.2.2;SP_002_2_033;INTERVENTI DI MANUTENZIONE E MESSA IN SICUREZZA STRADE PROVINCIALI - FINANZIATO CON FONDI “RAS - DGR 54/49 DEL 22.10.2025;;;;;;;;;H27H25002090002;;
+034;SP_002_3;3.2.2;SP_002_3_034;;;;;;;;;;;;
+035;SP_070;3.2.3;SP_070_035;"Man straordinaria e
+messa in sicurezza di viabilità
+e infrastrutture stradali -
+Lavori di manutenzione SP
+70 Ponte Is Cattas - LR
+18/2024";;2026;aff progettaz;GLB;;;NO;SI;H77H25000820002;229.245,28;
+036;SP_070;3.2.3;SP_070_036;MESSA IN SICUREZZA DEI PONTI E VIADOTTI ESISTENTI SP70 - IS CATTAS;;2026;redaz DIP;AM;;;NO;;J97H23000960001;1.150.000,00;
+037;SP_070;3.2.3;SP_070_037;"Messa in sicurezza e
+recupero funzionale della
+SP70 (Stralcio n. 2) e della
+SP71 - COD. 02454.R1.SU";;2026;redaz DIP;AM;;;NO;;J47H22002470001;899.606,00;
+;;;;"MESSA IN SICUREZZA 
+RECUPERO FUNZIONALE
+DELLE SP 70, 79, 80";;2026;redaz DIP;AM;;;;;J57H25000110001;650.000,00;
+038;SP_071;3.2.4;SP_071_038;"Messa in sicurezza e
+recupero funzionale della
+SP70 (Stralcio n. 2) e della
+SP71 - COD. 02454.R1.SU";;2026;redaz DIP;AM;;;NO;;J47H22002470001;899.606,00;
+039;SP_073;3.2.5;SP_073_039;"MESSA IN SICUREZZA E
+RECUPERO FUNZIONALE
+DELLA STRADA
+PROVINCIALE N. 73
+";;2026;redaz DIP;AM;;;NO;;J27H18001560001;1.000.000,00;
+040;SP_074;3.2.6;SP_074_040;;;;;;;;;;;;
+041;SP_075;3.2.7;SP_075_041;"LAVORI DI MESSA IN
+SICUREZZA E
+MANUTENZIONE
+STRAORDINARIA DEL
+PONTE SUL RIO SANTU
+MILANU SULLA STRADA
+PROVINCIALE N. 75";;2026;redaz DIP;AM;;;NO;;J47H17000240003;1.000.000,00;
+042;SP_075_2;3.2.8;SP_075_2_042;;;;;;;;;;;;
+043;SP_076;3.2.9;SP_076_043;in via di definizione;;;;;;;;;;;
+044;SP_076_2;3.2.9;SP_076_2_044;in via di definizione;;;;;;;;;;;
+045;SP_077;3.2.10;SP_077_045;"Adeguamento della SP
+77 alla categoria C1";;2028;da avviare;AM;;;NO;;J44E13000730002;2.924.746,85;
+046;SP_077_2;3.2.10;SP_077_2_046;;;;;;;;;;;;
+046;SP_078;3.2.11;SP_078_046;;;;;;;;;;;;
+047;SP_078_Bis;3.2.12;SP_078_Bis_047;;;;;;;;;;;;
+048;SP_079;3.2.13;SP_079_048;"MESSA IN SICUREZZA 
+RECUPERO FUNZIONALE
+DELLE SP 70, 79, 80";;2026;redazione DIP;AM;;;NO;;J57H25000110001;650.000,00;
+049;SP_080;3.2.14;SP_080_049;"MESSA IN SICUREZZA 
+RECUPERO FUNZIONALE
+DELLE SP 70, 79, 80";;2026;redazione DIP;AM;;;NO;;J57H25000110001;650.000,00;
+050;SP_081;3.2.15;SP_081_050;"Man straordinaria e
+messa in sicurezza di viabilità
+e infrastrutture stradali della
+Provincia del Sud Sardegna 
+Lavori di manutenzione SP
+81 tratto Cortoghiana – SP 82
+DGR29/38";;2026;affid SIA;PM;;;NO;;H67H25000950002;350.000,00;
+051;SP_081_Bis;3.2.16;SP_081_Bis_051;"Manutenzione straordinaria
+messa in sicurezza di viabilità
+e infrastrutture stradali della
+Provincia del Sud Sardegna
+Lavori di manutenzione SP
+81 tratto Cortoghiana – SP 82
+DGR29/38";;2026;affid SIA;PM;;;NO;;H67H25000950002;350.000,00;
+052;SP_082;3.1.1;SP_082_052;"Manutenzione straordinaria
+messa in sicurezza di viabilità
+e infrastrutture stradali della
+Provincia del Sud Sardegna
+Lavori di manutenzione SP
+82 - Bivio SS 126 (Gonnesa)
+- Bivio SP 2 (Portoscuso) -
+DGR29/38";;2026;redaz PFTE;PM;;;NO;;H67H25000920002;411.524,39;
+053;SP_083;3.1.2;SP_083_053;"Manutenzione straordinaria 
+messa in sicurezza di viabilità
+e infrastrutture stradali della
+Provincia del Sud Sardegna 
+Lavori di manutenzione tratto Bivio SS 126 (Funtanamare)
+– SP 83 (Fluminimaggiore)
+DGR29/38";;2026;redaz PFTE;PM;;;NO;;H67H25000930002;400.000,00;
+054;SP_083;3.1.2;SP_083_054;"MIT_BAR__Messa in
+sicurezza e recupero
+funzionale della SP83/105
+DM 216/24";;2026;redaz DIP;AM;;;;;;;
+055;SP_083;3.1.2;SP_083_055;INTERVENTI DI MANUTENZIONE E MESSA IN SICUREZZA STRADE PROVINCIALI - FINANZIATO CON FONDI “RAS - DGR 54/49 DEL 22.10.2025;;2026;redaz PFTE;GLB;;;;;H27H25002090002;200.000,00;
+;;;;;;;;;;;;;;;
+054;SP_084;3.1.3;SP_084_054;;;;;;;;;;;;
+055;SP_085;3.1.4;SP_085_055;;;;;;;;;;;;
+056;SP_086;3.1.5;SP_086_056;INTERVENTI DI MANUTENZIONE E MESSA IN SICUREZZA STRADE PROVINCIALI - FINANZIATO CON FONDI “RAS - DGR 54/49 DEL 22.10.2025;;2026;redaz PFTE;GLB;;;;;H27H25002090002;200.000,00;
+057;SP_087;3.1.7;SP_087_057;;;;;;;;;;;;
+058;SP_088;3.1.8;SP_088_058;;;;;;;;;;;;
+059;SP_089;3.1.10;SP_089_059;"Manutenzione straordinaria
+messa in sicurezza di viabilità e infrastrutture stradali della
+Provincia del Sud Sardegna
+Lavori di manutenzione SP
+89 tratto Domusnovas
+(abitato) - Domusnovas
+(Grotte) DGR29/38";;2026;redaz PFTE   ;PM;;;;;H67H25000940002;350.000,00;
+060;SP_089;3.1,10;SP_089_060;"Manutenzione straordinaria
+messa in sicurezza di viabilità e infrastrutture stradali -
+Lavori di manutenzione SP
+89 Tratta Domusnovas -
+Vallermosa - LR 18/2024";;2026;redaz PFTE   ;PM;;;;;H67H25000980002;300.000,00;
+060;SP_089_2;3.1.10;SP_089_2_060;;;;;;;;;;;;
+061;SP_100;3.2.17;SP_100_061;;;;;;;;;;;;
+062;SP_105;3.1.9;SP_105_062;;;;;;;;;;;;
+063;SP_107;3.2.18;SP_107_063;;;;;;;;;;;;
+064;SP_108;3.1.10;SP_108_064;;;;;;;;;;;;
+065;SP_109;3.2.19;SP_109_065;"Manutenzione straordinaria
+messa in sicurezza di viabilità e infrastrutture stradali -
+Lavori di manutenzione SP
+109 - LR 18/2024";;2026;;GLB;;;;;H67H25000990002;207.780,43;
+066;SP_110;3.2.20;SP_110_066;;;;;;;;;;;;
+;;;;INTERVENTI DI MANUTENZIONE E MESSA IN SICUREZZA STRADE PROVINCIALI - FINANZIATO CON FONDI “RAS - DGR 54/49 DEL 22.10.2025;;2026;redaz PFTE;GLB;;;;;H27H25002090002;200.000,00;
+;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;
