@@ -1,0 +1,14 @@
+name: Keep Streamlit App Awake
+
+on:
+  schedule:
+    - cron: "0 */4 * * *"  # ogni 4 ore
+  workflow_dispatch:       # permette il run manuale da GitHub
+
+jobs:
+  ping-app:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping Streamlit app
+        run: |
+          curl -s -o /dev/null -w "%{http_code}\n" "https://dbviabilita.streamlit.app/"
