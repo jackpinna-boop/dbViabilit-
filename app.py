@@ -311,4 +311,308 @@ if pagina == "Home":
 
     # Elenco interventi filtrati
     st.subheader("Elenco interventi (filtrati)")
-    colonne_tab 
+    colonne_tab = [
+        "denominazione_strada",
+        "STR",
+        "centro_costo",
+        "tipologia_intervento",
+        "rup",
+        "denominazione_intervento",
+        "stato_procedura",
+        "anno_rif",
+        "CUP",
+    ]
+    if "importo_stanziato" in df_filt.columns:
+        colonne_tab.append("importo_stanziato")
+
+    col_cfg = {}
+    if "importo_stanziato" in df_filt.columns:
+        col_cfg["importo_stanziato"] = st.column_config.NumberColumn(
+            "Importo stanziato", format="€ %,.2f"
+        )
+
+    st.dataframe(
+        df_filt[colonne_tab],
+        use_container_width=True,
+        column_config=col_cfg or None,
+    )
+
+    # Grafici generali
+    col_g1, col_g2 = st.columns(2)
+    with col_g1:
+        st.subheader("Numero interventi per strada")
+        st.bar_chart(df_filt.groupby("denominazione_strada").size())
+    with col_g2:
+        st.subheader("Manutenzioni vs altri")
+        n_m = df_filt[df_filt["manut_flag"]].shape[0]
+        n_a = df_filt.shape[0] - n_m
+        st.bar_chart(
+            pd.DataFrame({"Tipo": ["Manutenzioni", "Altri"], "Valore": [n_m, n_a]}).set_index("Tipo")
+        )
+
+    # Riepilogo economico
+    st.subheader("💶 Riepilogo economico (importo stanziato)")
+
+    if "importo_stanziato" in df_filt.columns:
+
+        df_rip = df_riepilogo(df_filt)
+
+        col_e1, col_e2 = st.columns(2)
+
+        # Somma per strada
+        with col_e1:
+            st.markdown("**Somma importi per strada**")
+            s_str = (
+                df_rip.groupby("denominazione_strada")["importo_stanziato"]
+                .sum()
+                .sort_values(ascending=False)
+                .reset_index()
+            )
+            s_str["Importo (€)"] = s_str["importo_stanziato"].map(fmt_eur)
+            st.dataframe(
+                s_str[["denominazione_strada", "Importo (€)"]],
+                use_container_width=True,
+            )
+
+        # Somma per tipologia
+        with col_e2:
+            st.markdown("**Somma importi per tipologia (dedup STR/determina/importo)**")
+            s_tip = (
+                df_rip.groupby("tipologia_intervento")["importo_stanziato"]
+                .sum()
+                .sort_values(ascending=False)
+                .reset_index()
+            )
+            s_tip["Importo (€)"] = s_tip["importo_stanziato"].map(fmt_eur)
+            st.dataframe(
+                s_tip[["tipologia_intervento", "Importo (€)"]],
+                use_container_width=True,
+            )
+
+        # Riepilogo: numero di strade coinvolte per tipologia
+        st.subheader("🛣️ Strade coinvolte per tipologia")
+
+        strade_per_tip = (
+            df_rip.groupby("tipologia_intervento")["denominazione_strada"]
+            .nunique()
+            .reset_index()
+            .rename(columns={"denominazione_strada": "Numero strade"})
+            .sort_values("Numero strade", ascending=False)
+        )
+
+        st.dataframe(
+            strade_per_tip,
+            use_container_width=True,
+        )
+
+        # Somma per manutenzione (VERO / FALSO)
+        st.markdown("**Somma importi per manutenzione (flag da tipologia)**")
+
+        s_man = (
+            df_rip.groupby("manut_flag")["importo_stanziato"]
+            .sum()
+            .reset_index()
+        )
+        s_man["manutenzione"] = s_man["manut_flag"].map(
+            {True: "VERO (manutenzioni)", False: "FALSO (altri interventi)"}
+        )
+        s_man["Importo (€)"] = s_man["importo_stanziato"].map(fmt_eur)
+        st.dataframe(
+            s_man[["manutenzione", "Importo (€)"]],
+            use_container_width=True,
+        )
+
+        totale_generale = s_man["importo_stanziato"].sum()
+        st.success(f"**Totale generale stanziato: {fmt_eur(totale_generale)}**")
+
+    else:
+        st.info("Colonna 'importo stanziato' non presente.")
+
+    st.markdown('</div>', unsafe_allow_html=True)
+
+# -------------------------------------------------------
+# PAGINA STRADA
+# -------------------------------------------------------
+else:
+    strada_sel = pagina
+    df_str = df_filt[df_filt["denominazione_strada"] == strada_sel]
+
+    st.markdown('<div class="sulcis-card">', unsafe_allow_html=True)
+    st.markdown(
+        f'<div class="sulcis-section-title">🛣️ {strada_sel}</div>',
+        unsafe_allow_html=True,
+    )
+
+    row_str = strade[strade["denominazione_strada"] == strada_sel].head(1)
+    if not row_str.empty:
+        c1, c2 = st.columns(2)
+        with c1:
+            st.markdown(f"**Codice STR:** {row_str.iloc[0].get('STR', '')}")
+        with c2:
+            st.markdown(f"**Comuni attraversati:** {row_str.iloc[0].get('comuni_attraversati', '')}")
+        st.markdown(f"**Localizzazione:** {row_str.iloc[0].get('localizzazione', '')}")
+
+    colonne_base = [
+        "tipologia_intervento",
+        "rup",
+        "denominazione_intervento",
+        "stato_procedura",
+        "anno_rif",
+        "CUP",
+    ]
+    if "importo_stanziato" in df_str.columns:
+        colonne_base.append("importo_stanziato")
+
+    col_cfg_str = {}
+    if "importo_stanziato" in df_str.columns:
+        col_cfg_str["importo_stanziato"] = st.column_config.NumberColumn(
+            "Importo stanziato", format="€ %,.2f"
+        )
+
+    st.subheader("📋 Interventi sulla strada")
+    st.dataframe(
+        df_str[colonne_base],
+        use_container_width=True,
+        column_config=col_cfg_str or None,
+    )
+
+    # Grafici strada
+    st.subheader("📊 Grafici strada")
+    cg1, cg2 = st.columns(2)
+    with cg1:
+        st.markdown("**Interventi per tipologia**")
+        st.bar_chart(df_str.groupby("tipologia_intervento").size())
+    with cg2:
+        st.markdown("**Manutenzioni vs altri**")
+        n_mi = df_str[df_str["manut_flag"]].shape[0]
+        n_ai = df_str.shape[0] - n_mi
+        st.bar_chart(
+            pd.DataFrame({"Tipo": ["Manutenzioni", "Altri"], "Valore": [n_mi, n_ai]}).set_index("Tipo")
+        )
+
+    # Riepilogo per tipologia (strada corrente)
+    st.subheader("📌 Riepilogo interventi per tipologia (strada)")
+
+    riepilogo_tip_str = (
+        df_str.groupby("tipologia_intervento")
+        .size()
+        .reset_index(name="Numero interventi")
+        .sort_values("Numero interventi", ascending=False)
+    )
+
+    st.dataframe(
+        riepilogo_tip_str,
+        use_container_width=True,
+    )
+
+    # ---------------------------------------------------
+    # PDF STRADA (OPZIONALE)
+    # ---------------------------------------------------
+    if REPORTLAB_AVAILABLE:
+        def crea_pdf_strada(data: pd.DataFrame, nome: str) -> BytesIO:
+            buffer = BytesIO()
+            doc = SimpleDocTemplate(buffer, pagesize=A4)
+            styles = getSampleStyleSheet()
+            elements = []
+
+            # Logo
+            try:
+                resp = requests.get(LOGO_URL, timeout=5)
+                if resp.status_code == 200:
+                    logo = RLImage(BytesIO(resp.content), width=40, height=40)
+                    elements.append(logo)
+                    elements.append(Spacer(1, 6))
+            except Exception:
+                pass
+
+            elements.append(Paragraph(f"Report Strada: {nome}", styles["Title"]))
+            elements.append(Paragraph("Provincia del Sulcis Iglesiente", styles["Normal"]))
+            elements.append(Spacer(1, 12))
+
+            n_tot = len(data)
+            n_mn = data[data["manut_flag"]].shape[0]
+            elements.append(
+                Paragraph(
+                    f"Interventi totali: {n_tot} – Manutenzioni: {n_mn} – Altri: {n_tot - n_mn}",
+                    styles["Normal"],
+                )
+            )
+            elements.append(Spacer(1, 12))
+
+            # Riepilogo economico semplice per strada
+            if "importo_stanziato" in data.columns:
+                data_local = data.copy()
+                if "determina" in data_local.columns:
+                    data_local["determina_norm"] = data_local["determina"].astype(str).str.strip().str.lower()
+                data_rip = df_riepilogo(data_local)
+                s_tot = data_rip["importo_stanziato"].sum()
+                s_mn = data_rip[data_rip["manut_flag"]]["importo_stanziato"].sum()
+                s_al = data_rip[~data_rip["manut_flag"]]["importo_stanziato"].sum()
+                txt = (
+                    f"Importo stanziato totale (dedup STR/determina/importo): {fmt_eur(s_tot)} "
+                    f"(Manutenzioni: {fmt_eur(s_mn)} – Altri: {fmt_eur(s_al)})"
+                )
+                elements.append(Paragraph(txt, styles["Normal"]))
+                elements.append(Spacer(1, 12))
+
+            # Tabella dettagli interventi
+            hs = styles["Heading5"]
+            cs = styles["Normal"]
+            cs.fontSize = 8
+
+            table_data = [[
+                Paragraph("Tipologia", hs),
+                Paragraph("RUP", hs),
+                Paragraph("Intervento", hs),
+                Paragraph("Stato", hs),
+                Paragraph("Anno", hs),
+                Paragraph("CUP", hs),
+                Paragraph("Importo", hs),
+            ]]
+
+            for _, row in data.iterrows():
+                if "importo_stanziato" in row and pd.notna(row["importo_stanziato"]):
+                    imp_txt = fmt_eur(row["importo_stanziato"])
+                else:
+                    imp_txt = "-"
+                table_data.append([
+                    Paragraph(str(row["tipologia_intervento"]), cs),
+                    Paragraph(str(row.get("rup", "")), cs),
+                    Paragraph(str(row["denominazione_intervento"]), cs),
+                    Paragraph(str(row.get("stato_procedura", "")), cs),
+                    Paragraph(str(row.get("anno_rif", "")), cs),
+                    Paragraph(str(row.get("CUP", "")), cs),
+                    Paragraph(imp_txt, cs),
+                ])
+
+            t = Table(table_data, repeatRows=1, colWidths=[70, 40, 180, 60, 30, 80, 60])
+            t.setStyle(TableStyle([
+                ("BACKGROUND", (0, 0), (-1, 0), colors.lightgrey),
+                ("FONTNAME", (0, 0), (-1, 0), "Helvetica-Bold"),
+                ("FONTSIZE", (0, 0), (-1, 0), 9),
+                ("ALIGN", (0, 0), (-1, 0), "CENTER"),
+                ("ALIGN", (6, 1), (6, -1), "RIGHT"),
+                ("VALIGN", (0, 0), (-1, -1), "TOP"),
+                ("LEFTPADDING", (0, 0), (-1, -1), 3),
+                ("RIGHTPADDING", (0, 0), (-1, -1), 3),
+                ("TOPPADDING", (0, 0), (-1, -1), 2),
+                ("BOTTOMPADDING", (0, 0), (-1, -1), 2),
+                ("GRID", (0, 0), (-1, -1), 0.25, colors.grey),
+            ]))
+            elements.append(t)
+
+            doc.build(elements)
+            buffer.seek(0)
+            return buffer
+
+        pdf = crea_pdf_strada(df_str, strada_sel)
+        st.download_button(
+            label="📄 Scarica report PDF strada",
+            data=pdf,
+            file_name=f"report_strada_{strada_sel}.pdf",
+            mime="application/pdf",
+        )
+    else:
+        st.info("Generazione PDF disabilitata: modulo 'reportlab' non disponibile.")
+
+    st.markdown('</div>', unsafe_allow_html=True)
